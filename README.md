@@ -7,7 +7,8 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 </code></pre>
 
 
-# TODO:
+# TODO1:
+## Install and configure apps manualy 
 
 - ArgoCD :white_check_mark:
 
@@ -20,3 +21,16 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 - Loki :x:
 
 - KubeBot :warning:
+
+# TODO2:
+## Automate installation through ArgoCD
+
+- ArgoCD :x:
+
+- Prometheus :x:
+
+- Grafana  :x:
+
+- Alert Manager :x:
+
+- Loki :x:
