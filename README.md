@@ -14,7 +14,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 - Prometheus :heavy_check_mark:	
 
-- Grafana :heavy_check_mark:	
+- Grafana :heavy_check_mark:	 admin // prom-operator
 
 - Alert Manager :heavy_check_mark:	
 
