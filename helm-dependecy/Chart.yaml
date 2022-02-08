@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube
+  namespace: botkube
+spec:
+  project: default
+  source:
+    chart: botkube
+    repoURL: https://infracloudio.github.io/charts
+    targetRevision: 0.12.4
+    helm:
+      releaseName: botkube
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: botkube
