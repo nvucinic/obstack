@@ -7,16 +7,16 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 </code></pre>
 
 
-# TODO
+# TODO:
 
-ArgoCD :white_check_mark:
+- ArgoCD :white_check_mark:
 
-Prometheus :x:
+- Prometheus :x:
 
-Grafana  :x:
+- Grafana  :x:
 
-Alert Manager :x:
+- Alert Manager :x:
 
-Loki :x:
+- Loki :x:
 
-KubeBot :warning:
+- KubeBot :warning:
