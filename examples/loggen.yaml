@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: loggen
+  namespace: rankor
+  labels:
+    app: loggen
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    ports:
+    - containerPort: 80
+    command: ["/bin/sh", "-ec", "while :; do echo `date`; sleep 5 ; done"]
