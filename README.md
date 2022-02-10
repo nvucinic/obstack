@@ -14,20 +14,18 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 - Prometheus :heavy_check_mark:	
 
-- Grafana :heavy_check_mark:	
+- Grafana :heavy_check_mark:	 admin // prom-operator
 
-- Alert Manager :heavy_check_mark:	
+- Alert Manager :heavy_check_mark:
 
- https://github.com/prometheus-operator/prometheus-operator  
- 
+- Loki :heavy_check_mark:
+
+https://grafana.com/docs/loki/latest/installation/helm/
 <pre><code>
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
-helm install prometheus prometheus-community/kube-prometheus-stack  --create-namespace  -n monitoring
+helm upgrade --install loki grafana/loki-stack  --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
 </code></pre>
-
-
-- Loki :x:
 
 - KubeBot :warning:
 
