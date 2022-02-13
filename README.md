@@ -1,6 +1,6 @@
 # OBStack
 
-## Install Helm
+## Install ArgoCD
 <pre><code>
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -33,7 +33,27 @@ helm upgrade --install loki grafana/loki-stack  --set grafana.enabled=true,prome
 # TODO2:
 ## Automate installation through ArgoCD
 
+Create ArgoCD application
+
+Manually add and setup new project 'obstack', add private repo credentials. 
+(TODO: Argo initial setup)
+
+<pre><code>
+kubectl apply -f apps/monitoring/obstack.yaml
+</code></pre>
+
 - ArgoCD :x:
+
+- Prometheus :heavy_check_mark:
+
+- Grafana  :heavy_check_mark:
+
+- Alert Manager :heavy_check_mark:
+
+- Loki :heavy_check_mark:
+
+# TODO3:
+## Tweaks and customizations
 
 - Prometheus :x:
 

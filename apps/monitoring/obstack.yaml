@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: obstack
+  namespace: argocd
+spec:
+  destination:
+    name: ''
+    namespace: obstack
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: apps/monitoring
+    repoURL: 'https://github.com/nvucinic/obstack'
+    targetRevision: HEAD
+  project: obstack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
