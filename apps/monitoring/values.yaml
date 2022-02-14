@@ -16,7 +16,7 @@ loki-stack:
 
     dashboards:
        custom-dashboard:
-       file: grafana/loki-quicksearch.json
+       file: dashboards/loki-quicksearch.json
 
   prometheus:
     enabled: true
