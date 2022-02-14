@@ -1,6 +1,32 @@
 loki-stack:
   grafana:
     enabled: true
+    datasources:
+      datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: Loki
+        type: loki
+        access: proxy
+        url: http://obstack-loki:3100
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        url: http://obstack-prometheus-server:80  
+      
+    dashboardsProvider:
+    enabled: enable
+    #ConfigMap with a custom provider file.
+    #Important to set the Path to "/opt/bitnami/grafana/dashboards"
+    #Evaluated as a template.
+    configMapName:
+
+    dashboards:
+     loki-quicksearch:
+      gnetId: 12019
+      revision: 1
+      datasource: loki
+
   prometheus:
     enabled: true
     alertmanager:
