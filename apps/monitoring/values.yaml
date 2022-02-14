@@ -6,11 +6,11 @@ loki-stack:
       apiVersion: 1
       datasources:
       - name: Loki
-        type: loki
+        type: Loki
         access: proxy
         url: http://obstack-loki:3100
       - name: Prometheus
-        type: prometheus
+        type: Prometheus
         access: proxy
         url: http://obstack-prometheus-server:80  
       
