@@ -12,7 +12,7 @@ spec:
     path: apps/monitoring
     repoURL: 'https://github.com/nvucinic/obstack'
     targetRevision: HEAD
-  project: obstack
+  project: default
   syncPolicy:
     automated:
       prune: true

@@ -22,8 +22,7 @@ kubectl get -n argocd secret/argocd-initial-admin-secret -o json | jq -r '.data.
 - Loki :heavy_check_mark:
 
 https://grafana.com/docs/loki/latest/installation/helm/
-<pre><code>
-helm repo add grafana https://grafana.github.io/helm-charts
+<pre><code>helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
 helm upgrade --install loki grafana/loki-stack  --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
 </code></pre>
@@ -35,18 +34,34 @@ helm upgrade --install loki grafana/loki-stack  --set grafana.enabled=true,prome
 
 Create ArgoCD application
 
-Manually add and setup new project 'obstack', add private repo credentials. 
+Manually add and setup new project 'obstack' (now is default project) (??)
+add private repo credentials.
+
+Temp step while repo is private:
+<pre><code>apiVersion: v1
+kind: Secret
+metadata:
+  name: argoproj-https-creds
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+stringData:
+  url: https://github.com/nvucinic/obstack
+  password: XXXX
+  username: XXXX</code></pre>
 (TODO: Argo initial setup)
 
-<pre><code>
-kubectl apply -f apps/monitoring/obstack.yaml
-</code></pre>
+<pre><code>kubectl apply -f apps/monitoring/obstack.yaml</code></pre>
 
 - ArgoCD :x:
 
 - Prometheus :heavy_check_mark:
 
-- Grafana  :heavy_check_mark:
+- Grafana  :heavy_check_mark: 
+
+  Username: admin
+
+  Password: <code>kubectl get -n obstack secret/obstack-grafana -o json | jq -r '.data."admin-password"' | base64 -d</code>
 
 - Alert Manager :heavy_check_mark:
 
@@ -58,7 +73,7 @@ kubectl apply -f apps/monitoring/obstack.yaml
 - Prometheus :x:
 
 - Grafana  :x:
-
+  - Dashboard
 - Alert Manager :x:
 
 - Loki :x:
