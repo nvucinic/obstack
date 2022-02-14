@@ -1,21 +1,22 @@
 # OBStack
 
-## Install ArgoCD
-<pre><code>
-kubectl create namespace argocd
+
+
+# Manual installation:
+## Install and configure apps manualy 
+
+- ArgoCD :heavy_check_mark:	
+
+<pre><code>kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl get -n argocd secret/argocd-initial-admin-secret -o json | jq -r '.data.password' | base64 -d
 </code></pre>
 
 
-# TODO1:
-## Install and configure apps manualy 
-
-- ArgoCD :heavy_check_mark:	
 
 - Prometheus :heavy_check_mark:	
 
-- Grafana :heavy_check_mark:	 admin // prom-operator
+- Grafana :heavy_check_mark:
 
 - Alert Manager :heavy_check_mark:
 
@@ -29,32 +30,25 @@ helm upgrade --install loki grafana/loki-stack  --set grafana.enabled=true,prome
 
 - KubeBot :warning:
 
-# TODO2:
+# Automatic:
 ## Automate installation through ArgoCD
 
-Create ArgoCD application
+Add ArgoCD Helm repository:
 
-Manually add and setup new project 'obstack' (now is default project) (??)
-add private repo credentials.
+<pre><code>helm repo add argo https://argoproj.github.io/argo-helm
+helm repo update
+</code></pre>
 
-Temp step while repo is private:
-<pre><code>apiVersion: v1
-kind: Secret
-metadata:
-  name: argoproj-https-creds
-  namespace: argocd
-  labels:
-    argocd.argoproj.io/secret-type: repo-creds
-stringData:
-  url: https://github.com/nvucinic/obstack
-  password: XXXX
-  username: XXXX</code></pre>
-(TODO: Argo initial setup)
+Install ArgoCD with Helm and custom values. (Add git repo credentials to values.yaml)
 
-<pre><code>kubectl apply -f apps/monitoring/obstack.yaml</code></pre>
+<pre><code>helm install argocd argo/argo-cd --create-namespace -f ./values.yaml
+</code></pre>
 
-- ArgoCD :x:
+- ArgoCD :heavy_check_mark:
 
+  Username: admin
+
+  Password: <code>kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d</code>
 - Prometheus :heavy_check_mark:
 
 - Grafana  :heavy_check_mark: 
@@ -66,6 +60,8 @@ stringData:
 - Alert Manager :heavy_check_mark:
 
 - Loki :heavy_check_mark:
+
+- KubeBot :warning:
 
 # TODO3:
 ## Tweaks and customizations
