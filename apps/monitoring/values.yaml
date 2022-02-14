@@ -14,11 +14,18 @@ loki-stack:
           options:
             path: /var/lib/grafana/dashboards/default
 
-     dashboards:
-       loki-quicksearch:
-         gnetId: 12019
-         revision: 1
-         datasource: loki
+    dashboards:
+      default:
+        aws-billing:
+          # Ref: https://grafana.com/dashboards/139
+          gnetId: 139
+          revision: 15
+          datasource: Prometheus
+        redis:
+          # Ref: https://grafana.com/dashboards/969
+          gnetId: 969
+          revision: 3
+          datasource: Prometheus
 
   prometheus:
     enabled: true
