@@ -1,22 +1,23 @@
 loki-stack:
   grafana:
     enabled: true
-    dashboardsProviders:
-     dashboardproviders.yaml:
-       apiVersion: 1
-       providers:
-        - name: 'default'
-          orgId: 1
-          folder: ''
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/default
+    # dashboardsProviders:
+    #  dashboardproviders.yaml:
+    #    apiVersion: 1
+    #    providers:
+    #     - name: 'default'
+    #       orgId: 1
+    #       folder: ''
+    #       type: file
+    #       disableDeletion: false
+    #       editable: true
+    #       options:
+    #         path: /var/lib/grafana/dashboards/default
 
-    dashboards:
-       custom-dashboard:
-       file: dashboards/loki-quicksearch.json
+    # dashboards:
+    #  default: 
+    #    custom-dashboard:
+    #    file: dashboards/loki-quicksearch.json
 
   prometheus:
     enabled: true
