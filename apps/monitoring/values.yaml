@@ -14,10 +14,10 @@ loki-stack:
     #       options:
     #         path: /var/lib/grafana/dashboards/default
 
-    # dashboards:
-    #  default: 
-    #    custom-dashboard:
-    #    file: dashboards/loki-quicksearch.json
+    dashboards:
+     default: 
+       custom-dashboard:
+        file: dashboards/loki-quicksearch.json
 
   prometheus:
     enabled: true
