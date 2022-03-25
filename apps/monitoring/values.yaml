@@ -15,6 +15,7 @@ loki-stack:
     #         path: /var/lib/grafana/dashboards/default
 
     dashboards:
+     default:
        custom-dashboard:
         file: dashboards/loki-quicksearch.json
 
