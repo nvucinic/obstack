@@ -41,7 +41,7 @@ helm repo update
 
 Install ArgoCD with Helm and custom values. (Add git repo credentials to values.yaml)
 
-<pre><code>helm install argocd argo/argo-cd --create-namespace -f ./values.yaml
+<pre><code>helm install argocd argo/argo-cd --create-namespace -n argocd -f ./values.yaml
 </code></pre>
 
 - ArgoCD :heavy_check_mark:
