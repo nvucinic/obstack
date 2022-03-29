@@ -1,7 +1,7 @@
 loki-stack:
   grafana:
     enabled: true
-    adminPassword: lokiloki
+    adminPassword: changeme
     # dashboardsProviders:
     #  dashboardproviders.yaml:
     #    apiVersion: 1
