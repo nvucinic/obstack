@@ -17,7 +17,7 @@ loki-stack:
     sidecar:
       dashboards:
        enabled: true
-       label: obstack
+       label: grafana_dashboard
 
   prometheus:
     enabled: true
