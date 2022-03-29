@@ -14,11 +14,16 @@ loki-stack:
     #       editable: true
     #       options:
     #         path: /var/lib/grafana/dashboards/default
-
-    dashboards:
-     default:
-       custom-dashboard:
-        file: dashboards/loki-quicksearch.json
+    sidecar:
+      dashboards:
+    # To enable sidecar
+       enabled: true
+    # Label key that configMaps should have in order to be mounted 
+       label: grafana_dashboard
+    # Folder where the configMaps are mounted in Grafana container
+      folder: /tmp/dashboards
+    # To enable searching configMap accross all namespaces
+      searchNamespace: ALL
 
   prometheus:
     enabled: true
