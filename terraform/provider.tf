@@ -1,8 +1,7 @@
 terraform {
-  backend "remote" {
-     organization = "nvteh"
-         workspaces {
-           name = "obstack"
-         }
-       }
-     }
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+    }
+  }
+}
