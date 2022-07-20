@@ -1,8 +1,8 @@
 data "digitalocean_kubernetes_versions" "kube_versions" {}
 
-resource digitalocean_kubernetes_cluster test-1 {
-  name   = "test-1"
-  region = "fra1"
+resource "digitalocean_kubernetes_cluster" "test-1" {
+  name    = "test-1"
+  region  = "fra1"
   version = data.digitalocean_kubernetes_versions.kube_versions.latest_version
 
   node_pool {
@@ -12,7 +12,7 @@ resource digitalocean_kubernetes_cluster test-1 {
   }
 }
 
-output "kube_config" {  
-  value = digitalocean_kubernetes_cluster.test-1.kube_config.0.raw_config
+output "kube_config" {
+  value     = digitalocean_kubernetes_cluster.test-1.kube_config.0.raw_config
   sensitive = true
 }
