@@ -2,23 +2,16 @@ loki-stack:
   grafana:
     enabled: true
     adminPassword: changeme
-    # dashboardsProviders:
-    #  dashboardproviders.yaml:
-    #    apiVersion: 1
-    #    providers:
-    #     - name: 'default'
-    #       orgId: 1
-    #       folder: ''
-    #       type: file
-    #       disableDeletion: false
-    #       editable: true
-    #       options:
-    #         path: /var/lib/grafana/dashboards/default
     sidecar:
       dashboards:
        enabled: true
        label: grafana_dashboard
-
+    dashboards:
+      default:
+        argocd-dashboard:
+          file: dashboards/argocd-dashboard.json
+        loki-quicksearch:
+          file: dashboards/loki-quicksearch.json
   prometheus:
     enabled: true
     alertmanager:
