@@ -6,27 +6,6 @@ loki-stack:
       dashboards:
         enabled: true
         label: grafana_dashboard
-        provider:
-          foldersFromFilesStructure: true
-          updateIntervalSeconds: 30
-#    dashboardProviders:
-#      dashboardproviders.yaml:
-#        apiVersion: 1
-#        providers:
-#        - name: 'default'
-#          orgId: 1
-#          folder: ''
-#          type: file
-#          disableDeletion: false
-#          editable: true
-#          options:
-#            path: /var/lib/grafana/dashboards/default
-    dashboards:
-      default:
-        argocd-dashboard:
-          file: dashboards/argocd-dashboards.json
-        loki-quicksearch:
-          file: dashboards/loki-quicksearch.json
   prometheus:
     enabled: true
     alertmanager:

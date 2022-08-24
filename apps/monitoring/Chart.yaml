@@ -1,5 +1,5 @@
 apiVersion: v2
-name: monitoring-sttack
+name: monitoring-stack
 description: Monitoring stack with Prometheus, Grafana, Loki, Alert Manager
 
 # A chart can be either an 'application' or a 'library' chart.
