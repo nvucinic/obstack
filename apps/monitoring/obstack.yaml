@@ -11,7 +11,10 @@ spec:
   source:
     path: apps/monitoring
     repoURL: 'https://github.com/nvucinic/obstack'
-    targetRevision: HEAD
+    targetRevision: features-lr
+      helm:
+        valueFiles:
+          - values.yaml
   project: default
   syncPolicy:
     automated:
