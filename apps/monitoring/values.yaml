@@ -1,4 +1,37 @@
 loki-stack:
+  loki:
+    podAnnotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "3100"
+    persistence:
+      enabled: false
+      size: 10Gi
+  prometheus:
+    enabled: true
+    alertmanager:
+      persistentVolume:
+        enabled: false
+        size: 10Gi
+    server:
+      persistentVolume:
+        enabled: false
+        size: 10Gi
+      global:
+        external_labels:
+          cluster: aks-dev
+          environment: dev
+    alertmanagerFiles:
+      alertmanager.yml:
+        route:
+          group_wait: 10s
+          group_interval: 5m
+          receiver: default-receiver
+          repeat_interval: 3h
+        receivers:
+          - name: default-receiver
+            slack_configs:
+            - api_url: http://localhost:8080/slack
+              send_resolved: true
   grafana:
     enabled: true
     adminPassword: changeme
@@ -6,11 +39,14 @@ loki-stack:
       dashboards:
         enabled: true
         label: grafana_dashboard
-  prometheus:
-    enabled: true
-    alertmanager:
-      persistentVolume:
-        enabled: false
-    server:
-      persistentVolume:
-        enabled: false
+    ingress:
+      enabled: false
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+        - grafana.example.com
+      tls:
+        - secretName: grafana-tls-cert
+          hosts:
+            - 'grafana.example.com'

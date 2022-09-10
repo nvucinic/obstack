@@ -15,6 +15,7 @@ spec:
       helm:
         valueFiles:
           - values.yaml
+          - values-alerts.yaml
   project: default
   syncPolicy:
     automated:

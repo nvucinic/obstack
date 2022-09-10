@@ -1,0 +1,9 @@
+#configs:
+#  credentialTemplates:
+#    private-repo:
+#      url: https://github.com/nvucinic/obstack
+#      password: <token>
+#      username: <username>
+#  repositories:
+#    private-repo:
+#      url: https://github.com/nvucinic/obstack  

@@ -1,0 +1,21 @@
+applications:
+  - name: obstack
+    namespace: argocd
+    project: default
+    source:
+      path: apps/monitoring
+      repoURL: 'https://github.com/nvucinic/obstack'
+      targetRevision: features-lr
+        helm:
+          valueFiles:
+            - values.yaml
+    destination:
+      name: ''
+      namespace: obstack
+      server: 'https://kubernetes.default.svc'
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
