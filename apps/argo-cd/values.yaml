@@ -1,27 +1,28 @@
-#configs:
-#  credentialTemplates:
-#    private-repo:
-#      url: https://github.com/nvucinic/obstack
-#      password: <token>
-#      username: <username>
-#  repositories:
-#    private-repo:
-#      url: https://github.com/nvucinic/obstack  
-
-metrics:
-  enabled: true
-dex:
+argo-cd:
+  #configs:
+  #  credentialTemplates:
+  #    private-repo:
+  #      url: https://github.com/nvucinic/obstack
+  #      password: <token>
+  #      username: <username>
+  #  repositories:
+  #    private-repo:
+  #      url: https://github.com/nvucinic/obstack  
+  
   metrics:
     enabled: true
-controller:
-  metrics:
-    enabled: true
-  podAnnotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8082"
-server:
-  metrics:
-    enabled: true
-  podAnnotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8080"
+  dex:
+    metrics:
+      enabled: true
+  controller:
+    metrics:
+      enabled: true
+    podAnnotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "8082"
+  server:
+    metrics:
+      enabled: true
+    podAnnotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "8080"
