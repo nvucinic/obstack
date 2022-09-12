@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  destination:
+    name: ''
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: apps/argo-cd
+    repoURL: 'https://github.com/nvucinic/obstack'
+    targetRevision: features-lr
+      helm:
+        valueFiles:
+          - values.yaml
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
