@@ -7,3 +7,13 @@
 #  repositories:
 #    private-repo:
 #      url: https://github.com/nvucinic/obstack  
+
+metrics:
+  enabled: true
+dex:
+  metrics:
+    enabled: true
+global:
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    #prometheus.io/port: "8082"
