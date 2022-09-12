@@ -13,7 +13,13 @@ metrics:
 dex:
   metrics:
     enabled: true
-global:
+controller:
+  metrics:
+    enabled: true
   podAnnotations:
     prometheus.io/scrape: "true"
-    #prometheus.io/port: "8082"
+server:
+  metrics:
+    enabled: true
+  podAnnotations:
+    prometheus.io/scrape: "true"
