@@ -12,9 +12,9 @@ spec:
     path: apps/argo-cd
     repoURL: 'https://github.com/nvucinic/obstack'
     targetRevision: features-lr
-      helm:
-        valueFiles:
-          - values.yaml
+    helm:
+      valueFiles:
+        - values.yaml
   project: default
   syncPolicy:
     automated:
