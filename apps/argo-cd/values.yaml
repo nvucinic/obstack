@@ -8,12 +8,12 @@ argo-cd:
   #  repositories:
   #    private-repo:
   #      url: https://github.com/nvucinic/obstack  
-  
-  metrics:
-    enabled: true
   dex:
     metrics:
       enabled: true
+    podAnnotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "5558"
   controller:
     metrics:
       enabled: true
@@ -25,4 +25,4 @@ argo-cd:
       enabled: true
     podAnnotations:
       prometheus.io/scrape: "true"
-      prometheus.io/port: "8080"
+      prometheus.io/port: "8083"
