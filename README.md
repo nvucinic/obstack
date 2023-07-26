@@ -41,8 +41,11 @@ helm repo update
 
 Install ArgoCD with Helm and custom values. (Add git repo credentials to values.yaml)
 
-<pre><code>helm install argocd argo/argo-cd --create-namespace -n argocd -f ./values.yaml
-</code></pre>
+```
+cd apps/
+helm upgrade argocd . -f values.yaml --namespace argocd --create-namespace --install
+kubectl get -n argocd secret/argocd-initial-admin-secret -o json | jq -r '.data.password' | base64 -d
+```
 
 - ArgoCD :heavy_check_mark:
 
